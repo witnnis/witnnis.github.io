@@ -5,7 +5,13 @@ const letters = [
   {
     type: "letter",
     nickname: "윗니닝",
-    content: "따뜻한 연말 보내세요. 항상 응원합니다 💌"
+    content: `안녕 윗니들아
+벌써 윗니들이랑 보내는 두번째 크리스마스야🎄 시간이 너무 빨라서 정말 믿겨가 안돼…
+윗니 위시랑 함께한 일년이 이렇게 빠르다니 너무 재밌어서 그런거겠지?!
+빠르긴 했지만 돌아보면 추억 진짜 한가득이다
+내년에도 잘 부탁해 나 윗달이 너무 좋아서 오래오래 있고 싶어 
+올해도 수고 많았고 내년엔 더 좋은 일들만 가득했으면 좋겠다
+윗니들아 사랑혀 앞니도 사랑훼🦷`
   },
   {
     type: "letter",
@@ -192,6 +198,7 @@ for (let i = 0; i < 50; i++) {
   snowflake.style.fontSize = (10 + Math.random() * 6) + "px";
   snowContainer.appendChild(snowflake);
 }
+
 
 
 
