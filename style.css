@@ -79,8 +79,8 @@ body {
 
 @media (max-width: 600px) {
   #grid {
-    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
-    gap: 15px;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    gap: 20px;
   }
 }
 
@@ -242,3 +242,4 @@ body {
     transform: translateY(100vh) rotate(360deg); 
   }
 }
+
