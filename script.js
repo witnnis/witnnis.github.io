@@ -558,6 +558,11 @@ items.forEach(item => {
     // 편지 봉투
     el.style.backgroundImage = "url('assets/envelope.png')";
     el.onclick = () => openLetter(item, el);
+    // 편지 봉투 아래에 닉네임 표시
+    const nameLabel = document.createElement("div");
+    nameLabel.className = "name-label";
+    nameLabel.textContent = item.nickname;
+    el.appendChild(nameLabel);
   } 
   else if (item.type === "sticker") {
     // 스티커
@@ -625,6 +630,7 @@ for (let i = 0; i < 50; i++) {
   snowflake.style.fontSize = (10 + Math.random() * 6) + "px";
   snowContainer.appendChild(snowflake);
 }
+
 
 
 
