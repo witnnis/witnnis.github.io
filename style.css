@@ -86,7 +86,7 @@ body {
 
 /* ========== 아이템 (편지/스티커) ========== */
 .item {
-  width: 80%;
+  width: 85%;
   aspect-ratio: 1 / 1;
   background-size: contain;
   background-repeat: no-repeat;
@@ -269,5 +269,6 @@ body {
     bottom: -18px;
   }
 }
+
 
 
