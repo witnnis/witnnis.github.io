@@ -1,0 +1,131 @@
+* {
+  box-sizing: border-box;
+  font-family: "Noto Serif KR", serif;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(#0f3d2e, #000);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* 로딩 */
+#loading {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.logo {
+  width: 160px;
+}
+
+.loading-bar {
+  width: 200px;
+  height: 6px;
+  background: rgba(255,255,255,.2);
+  margin-top: 20px;
+  border-radius: 10px;
+}
+
+.loading-progress {
+  width: 0;
+  height: 100%;
+  background: #fff;
+  animation: load 2.5s forwards;
+}
+
+@keyframes load {
+  to { width: 100%; }
+}
+
+/* 메인 */
+.hidden { display: none; }
+
+#grid {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 16px;
+}
+
+.item {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  cursor: pointer;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* 오버레이 */
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+.letter-box {
+  position: relative;
+  animation: open .4s ease forwards;
+}
+
+@keyframes open {
+  from { transform: scale(.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.paper {
+  background: #fffaf0;
+  color: #333;
+  width: 90vw;
+  max-width: 420px;
+  padding: 24px;
+  border-radius: 12px;
+}
+
+.to {
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+#closeBtn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background: rgba(255,255,255,.9);
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+/* 눈 */
+#snow span {
+  position: fixed;
+  top: -10px;
+  color: white;
+  animation: snow linear infinite;
+  pointer-events: none;
+}
+
+@keyframes snow {
+  to { transform: translateY(100vh); }
+}
