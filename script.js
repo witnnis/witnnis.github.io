@@ -4,8 +4,8 @@
 const letters = [
   {
     type: "letter",
-    nickname: "시즈니 1",
-    content: "따뜻한 연말 보내세요. 항상 응원합니다 💌"
+    nickname: "익명 시즈니 1",
+    content: "메리 크리스마스! 올 한 해도 고생 많았어요 🎄"
   },
   {
     type: "letter",
@@ -147,7 +147,7 @@ items.forEach(item => {
  *********************************/
 function openLetter(letter, element) {
   document.getElementById("nickname").textContent = letter.nickname;
-  document.getElementById("content").textContent = letter.content;
+  document.getElementById("content").innerHTML = letter.content;
   overlay.classList.remove("hidden");
   
   // 읽은 편지 표시
@@ -192,7 +192,3 @@ for (let i = 0; i < 50; i++) {
   snowflake.style.fontSize = (10 + Math.random() * 6) + "px";
   snowContainer.appendChild(snowflake);
 }
-
-
-
-
