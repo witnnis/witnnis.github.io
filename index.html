@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>크리스마스 익명 편지</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- 로딩 -->
+<div id="loading">
+  <img src="assets/logo.png" class="logo" />
+  <p>편지를 모으고 있어요… 🎄</p>
+  <div class="loading-bar">
+    <div class="loading-progress"></div>
+  </div>
+</div>
+
+<!-- 눈 -->
+<div id="snow"></div>
+
+<!-- 메인 -->
+<main id="main" class="hidden">
+  <div id="grid"></div>
+</main>
+
+<!-- 편지 오버레이 -->
+<div id="overlay" class="hidden">
+  <div class="letter-box">
+    <button id="closeBtn">✕</button>
+    <div class="paper">
+      <div class="to">To. <span id="nickname"></span></div>
+      <div id="content"></div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
