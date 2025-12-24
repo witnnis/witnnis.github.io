@@ -530,6 +530,34 @@ const stickers = [
   { 
     type: "sticker",
     img: "assets/sticker-star.png" 
+  },
+    { 
+    type: "stickerㅇㅇㅇㅇㅇㅇㅇ",
+    img: "assets/sticker-dear.png" 
+  },
+  { 
+    type: "sticker",
+    img: "assets/sticker-balls.png" 
+  },
+    { 
+    type: "sticker",
+    img: "assets/sticker-balls2.png" 
+  },
+    { 
+    type: "sticker",
+    img: "assets/sticker-socks.png" 
+  },
+    { 
+    type: "sticker",
+    img: "assets/sticker-wichu.png" 
+  },
+    { 
+    type: "sticker",
+    img: "assets/sticker-wish.png" 
+  },
+    { 
+    type: "sticker",
+    img: "assets/sticker-wish2.png" 
   }
 ];
 
@@ -630,6 +658,7 @@ for (let i = 0; i < 50; i++) {
   snowflake.style.fontSize = (10 + Math.random() * 6) + "px";
   snowContainer.appendChild(snowflake);
 }
+
 
 
 
