@@ -533,7 +533,7 @@ const stickers = [
   },
     { 
     type: "sticker",
-    img: "assets/sticker-dear.png" 
+    img: "assets/sticker-deer.png" 
   },
   { 
     type: "sticker",
@@ -658,6 +658,7 @@ for (let i = 0; i < 50; i++) {
   snowflake.style.fontSize = (10 + Math.random() * 6) + "px";
   snowContainer.appendChild(snowflake);
 }
+
 
 
 
