@@ -1,13 +1,16 @@
 * {
   box-sizing: border-box;
-  font-family: "Noto Serif KR", serif;
+  font-family: serif;
 }
 
 body {
   margin: 0;
   background: radial-gradient(#0f3d2e, #000);
   color: #fff;
-  overflow-x: hidden;
+}
+
+.hidden {
+  display: none;
 }
 
 /* 로딩 */
@@ -17,36 +20,17 @@ body {
   background: #000;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   z-index: 10;
 }
 
-.loading-bar {
-  width: 200px;
-  height: 6px;
-  background: rgba(255,255,255,.2);
-  margin-top: 20px;
-  border-radius: 10px;
-}
-
-.loading-progress {
-  width: 0;
-  height: 100%;
-  background: #fff;
-  animation: load 2.5s forwards;
-}
-
-@keyframes load {
-  to { width: 100%; }
+.logo {
+  width: 160px;
+  margin-bottom: 16px;
 }
 
 /* 메인 */
-.hidden {
-  display: none;
-  pointer-events: none;
-}
-
 #grid {
   padding: 20px;
   display: grid;
@@ -56,35 +40,40 @@ body {
 
 .item {
   width: 100%;
-  aspect-ratio: 1 / 1;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
+  aspect-ratio: 1/1;
+  background: url("assets/envelope.png") center / contain no-repeat;
   cursor: pointer;
-  animation: float 3s ease-in-out infinite;
-  transition: opacity .3s, transform .3s;
 }
 
-.item.read {
-  opacity: 0.4;
-}
-
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
-}
-
-/* 오버레이 */
+/* 편지 */
 #overlay {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,.6);
   display: flex;
-  align-items: center;
   justify-content: center;
-  z-index: 5;
+  align-items: center;
+  z-index: 20;
 }
 
 .letter-box {
+  background: #fffaf0;
+  color: #333;
+  width: 90%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 12px;
   position: relative;
-  animation: open .4s ease forw
+}
+
+#closeBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  border: none;
+  background: #ddd;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+}
