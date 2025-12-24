@@ -60,8 +60,13 @@ overlay.onclick = e => {
  * 로딩
  ***********************/
 setTimeout(() => {
-  document.getElementById("loading").classList.add("hidden");
-  document.getElementById("main").classList.remove("hidden");
+  const loading = document.getElementById("loading");
+  const main = document.getElementById("main");
+  
+  if (loading) loading.classList.add("hidden");
+  if (main) main.classList.remove("hidden");
+  
+  console.log("로딩 완료!"); // 디버깅용
 }, 1800);
 
 /***********************
