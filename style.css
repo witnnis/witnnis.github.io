@@ -22,10 +22,6 @@ body {
   z-index: 10;
 }
 
-.logo {
-  width: 160px;
-}
-
 .loading-bar {
   width: 200px;
   height: 6px;
@@ -46,7 +42,10 @@ body {
 }
 
 /* 메인 */
-.hidden { display: none; }
+.hidden {
+  display: none;
+  pointer-events: none;
+}
 
 #grid {
   padding: 20px;
@@ -63,10 +62,15 @@ body {
   background-position: center;
   cursor: pointer;
   animation: float 3s ease-in-out infinite;
+  transition: opacity .3s, transform .3s;
+}
+
+.item.read {
+  opacity: 0.4;
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
+  0%,100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
 }
 
@@ -83,49 +87,4 @@ body {
 
 .letter-box {
   position: relative;
-  animation: open .4s ease forwards;
-}
-
-@keyframes open {
-  from { transform: scale(.8); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-.paper {
-  background: #fffaf0;
-  color: #333;
-  width: 90vw;
-  max-width: 420px;
-  padding: 24px;
-  border-radius: 12px;
-}
-
-.to {
-  font-weight: bold;
-  margin-bottom: 12px;
-}
-
-#closeBtn {
-  position: absolute;
-  top: -10px;
-  right: -10px;
-  background: rgba(255,255,255,.9);
-  border: none;
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  cursor: pointer;
-}
-
-/* 눈 */
-#snow span {
-  position: fixed;
-  top: -10px;
-  color: white;
-  animation: snow linear infinite;
-  pointer-events: none;
-}
-
-@keyframes snow {
-  to { transform: translateY(100vh); }
-}
+  animation: open .4s ease forw
