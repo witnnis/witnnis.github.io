@@ -147,7 +147,7 @@ items.forEach(item => {
  *********************************/
 function openLetter(letter, element) {
   document.getElementById("nickname").textContent = letter.nickname;
-  document.getElementById("content").innerHTML = letter.content;
+  document.getElementById("content").textContent = letter.content;
   overlay.classList.remove("hidden");
   
   // 읽은 편지 표시
