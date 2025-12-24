@@ -1,12 +1,13 @@
 * {
   box-sizing: border-box;
-  font-family: serif;
+  font-family: "Noto Serif KR", serif;
 }
 
 body {
   margin: 0;
   background: radial-gradient(#0f3d2e, #000);
   color: #fff;
+  overflow-x: hidden;
 }
 
 .hidden {
@@ -20,60 +21,101 @@ body {
   background: #000;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  z-index: 10;
+  justify-content: center;
+  z-index: 20;
 }
 
 .logo {
-  width: 160px;
-  margin-bottom: 16px;
+  width: 180px;
+  margin-bottom: 20px;
 }
 
 /* 메인 */
 #grid {
-  padding: 20px;
+  padding: 24px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  gap: 16px;
+  gap: 18px;
 }
 
+/* 봉투 & 스티커 */
 .item {
   width: 100%;
-  aspect-ratio: 1/1;
-  background: url("assets/envelope.png") center / contain no-repeat;
+  aspect-ratio: 1 / 1;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
   cursor: pointer;
+  animation: float 3s ease-in-out infinite;
 }
 
-/* 편지 */
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.item.read {
+  opacity: 0.45;
+}
+
+/* 오버레이 */
 #overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.6);
+  background: rgba(0,0,0,.65);
   display: flex;
-  justify-content: center;
   align-items: center;
-  z-index: 20;
+  justify-content: center;
+  z-index: 30;
 }
 
 .letter-box {
+  position: relative;
+  animation: open .35s ease forwards;
+}
+
+@keyframes open {
+  from { transform: scale(.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.paper {
   background: #fffaf0;
   color: #333;
-  width: 90%;
-  max-width: 400px;
-  padding: 20px;
-  border-radius: 12px;
-  position: relative;
+  width: 90vw;
+  max-width: 420px;
+  padding: 26px;
+  border-radius: 14px;
+}
+
+.to {
+  font-weight: bold;
+  margin-bottom: 14px;
 }
 
 #closeBtn {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  border: none;
-  background: #ddd;
+  top: -10px;
+  right: -10px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
-  width: 28px;
-  height: 28px;
+  border: none;
+  background: rgba(255,255,255,.9);
   cursor: pointer;
+}
+
+/* 눈 */
+#snow span {
+  position: fixed;
+  top: -10px;
+  color: white;
+  font-size: 14px;
+  animation: snow linear infinite;
+  pointer-events: none;
+}
+
+@keyframes snow {
+  to { transform: translateY(100vh); }
 }
