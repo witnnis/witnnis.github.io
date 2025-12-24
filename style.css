@@ -252,7 +252,7 @@ body {
 
 .name-label {
   position: absolute;
-  bottom: -22px;      /* 봉투 이미지 아래쪽으로 이동 */
+  bottom: -14px;      /* 봉투 이미지 아래쪽으로 이동 */
   left: 50%;
   transform: translateX(-50%); /* 정확히 가운데 정렬 */
   font-size: 11px;    /* 글자 크기 */
@@ -269,3 +269,4 @@ body {
     bottom: -18px;
   }
 }
+
