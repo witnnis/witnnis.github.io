@@ -1,22 +1,119 @@
-/***********************
- * 편지 + 스티커 데이터
- ***********************/
-const items = [
-  { type: "letter", nickname: "익명1", content: "첫 번째 편지 🎄" },
-  { type: "letter", nickname: "익명2", content: "두 번째 편지 💌" },
-  { type: "letter", nickname: "익명3", content: "세 번째 편지 ❄️" },
-  { type: "letter", nickname: "익명4", content: "네 번째 편지 🎁" },
-  { type: "letter", nickname: "익명5", content: "다섯 번째 편지 🌟" },
-
-  { type: "sticker", img: "sticker-tree.png" },
-  { type: "sticker", img: "sticker-snowman.png" },
-  { type: "sticker", img: "sticker-star.png", link: "https://www.youtube.com/watch?v=DITu2nhnbtk" },
-  { type: "sticker", img: "sticker-gift.png", link: "https://www.youtube.com/watch?v=n1q3XgM9_cQ" }
+/*********************************
+ * 📝 편지 데이터 (10개 더미)
+ *********************************/
+const letters = [
+  {
+    type: "letter",
+    nickname: "익명 시즈니 1",
+    content: "메리 크리스마스! 올 한 해도 고생 많았어요 🎄"
+  },
+  {
+    type: "letter",
+    nickname: "익명 시즈니 2",
+    content: "따뜻한 연말 보내세요. 항상 응원합니다 💌"
+  },
+  {
+    type: "letter",
+    nickname: "익명 시즈니 3",
+    content: "함께해서 행복한 한 해였어요! ❄️"
+  },
+  {
+    type: "letter",
+    nickname: "익명 시즈니 4",
+    content: "새해 복 많이 받으세요~ 🎁"
+  },
+  {
+    type: "letter",
+    nickname: "익명 시즈니 5",
+    content: "올해도 함께해줘서 고마워요 🌟"
+  },
+  {
+    type: "letter",
+    nickname: "익명 시즈니 6",
+    content: "소중한 추억들 감사합니다 🎄"
+  },
+  {
+    type: "letter",
+    nickname: "익명 시즈니 7",
+    content: "언제나 행복하길 바라요 💚"
+  },
+  {
+    type: "letter",
+    nickname: "익명 시즈니 8",
+    content: "따뜻한 겨울 되세요! ❄️"
+  },
+  {
+    type: "letter",
+    nickname: "익명 시즈니 9",
+    content: "행복한 크리스마스 보내요 🎅"
+  },
+  {
+    type: "letter",
+    nickname: "익명 시즈니 10",
+    content: "내년에도 함께해요! 🎄"
+  }
 ];
 
-/***********************
- * 렌더링
- ***********************/
+/*********************************
+ * 🎁 스티커 데이터
+ *********************************/
+const stickers = [
+  // 유튜브 링크 있는 선물 스티커들
+  { 
+    type: "sticker",
+    img: "assets/sticker-gift.png", 
+    link: "https://www.youtube.com/watch?v=DITu2nhnbtk" 
+  },
+  { 
+    type: "sticker",
+    img: "assets/sticker-gift.png", 
+    link: "https://www.youtube.com/watch?v=n1q3XgM9_cQ" 
+  },
+  { 
+    type: "sticker",
+    img: "assets/sticker-gift.png", 
+    link: "https://www.youtube.com/watch?v=OMbQlLCmw84" 
+  },
+  { 
+    type: "sticker",
+    img: "assets/sticker-gift.png", 
+    link: "https://www.youtube.com/watch?v=YfiZORcr8uw" 
+  },
+  { 
+    type: "sticker",
+    img: "assets/sticker-gift.png", 
+    link: "https://www.youtube.com/shorts/0ztMa7rtkO4" 
+  },
+  
+  // 그냥 장식용 스티커들 (링크 없음)
+  { 
+    type: "sticker",
+    img: "assets/sticker-tree.png" 
+  },
+  { 
+    type: "sticker",
+    img: "assets/sticker-snowman.png" 
+  },
+  { 
+    type: "sticker",
+    img: "assets/sticker-star.png" 
+  }
+];
+
+/*********************************
+ * 🎲 편지와 스티커 랜덤 섞기
+ *********************************/
+const items = [...letters];
+
+// 스티커를 랜덤 위치에 삽입
+stickers.forEach(sticker => {
+  const randomIndex = Math.floor(Math.random() * (items.length + 1));
+  items.splice(randomIndex, 0, sticker);
+});
+
+/*********************************
+ * 🎨 아이템 렌더링
+ *********************************/
 const grid = document.getElementById("grid");
 const overlay = document.getElementById("overlay");
 
@@ -25,58 +122,73 @@ items.forEach(item => {
   el.className = "item";
 
   if (item.type === "letter") {
+    // 편지 봉투
     el.style.backgroundImage = "url('assets/envelope.png')";
     el.onclick = () => openLetter(item, el);
-  } else {
-    el.style.backgroundImage = `url('assets/${item.img}')`;
+  } 
+  else if (item.type === "sticker") {
+    // 스티커
+    el.style.backgroundImage = `url('${item.img}')`;
+    
+    // 링크가 있으면 클릭 시 새 탭에서 열기
     if (item.link) {
       el.onclick = () => window.open(item.link, "_blank");
+      el.style.cursor = "pointer";
+    } else {
+      el.style.cursor = "default";
     }
   }
 
   grid.appendChild(el);
 });
 
-/***********************
- * 편지 열기 / 닫기
- ***********************/
-function openLetter(letter, el) {
+/*********************************
+ * 💌 편지 열기/닫기
+ *********************************/
+function openLetter(letter, element) {
   document.getElementById("nickname").textContent = letter.nickname;
   document.getElementById("content").textContent = letter.content;
   overlay.classList.remove("hidden");
-  el.classList.add("read");
+  
+  // 읽은 편지 표시
+  element.classList.add("read");
 }
 
 function closeLetter() {
   overlay.classList.add("hidden");
 }
 
-document.getElementById("closeBtn").onclick = closeLetter;
-overlay.onclick = e => {
-  if (e.target === overlay) closeLetter();
+// 닫기 버튼 클릭
+document.getElementById("closeBtn").onclick = (e) => {
+  e.stopPropagation();
+  closeLetter();
 };
 
-/***********************
- * 로딩
- ***********************/
-setTimeout(() => {
-  const loading = document.getElementById("loading");
-  const main = document.getElementById("main");
-  
-  if (loading) loading.classList.add("hidden");
-  if (main) main.classList.remove("hidden");
-  
-  console.log("로딩 완료!"); // 디버깅용
-}, 1800);
+// 배경 클릭해도 닫기
+overlay.onclick = (e) => {
+  if (e.target === overlay) {
+    closeLetter();
+  }
+};
 
-/***********************
- * 눈 생성
- ***********************/
-const snow = document.getElementById("snow");
-for (let i = 0; i < 40; i++) {
-  const s = document.createElement("span");
-  s.textContent = "❄";
-  s.style.left = Math.random() * 100 + "vw";
-  s.style.animationDuration = 5 + Math.random() * 5 + "s";
-  snow.appendChild(s);
+/*********************************
+ * ⏳ 로딩 화면 처리
+ *********************************/
+setTimeout(() => {
+  document.getElementById("loading").classList.add("hidden");
+  document.getElementById("main").classList.remove("hidden");
+}, 2600);
+
+/*********************************
+ * ❄️ 눈 효과
+ *********************************/
+const snowContainer = document.getElementById("snow");
+for (let i = 0; i < 50; i++) {
+  const snowflake = document.createElement("span");
+  snowflake.textContent = "❄";
+  snowflake.style.left = Math.random() * 100 + "vw";
+  snowflake.style.animationDuration = (5 + Math.random() * 5) + "s";
+  snowflake.style.animationDelay = Math.random() * 3 + "s";
+  snowflake.style.fontSize = (10 + Math.random() * 6) + "px";
+  snowContainer.appendChild(snowflake);
 }
